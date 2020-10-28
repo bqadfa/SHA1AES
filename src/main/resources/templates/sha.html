@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHA-256</title>
+</head>
+<body>
+<h1>SHA-256 encryption:</h1>
+
+<form th:action="@{/sha}" th:object="${initmsg}" th:data="${encryptedMessage}" th:method="post">
+    <label for="initialMessage">Text->To->Encrypt:</label>
+    <input type="text" id="initialMessage" name="initmsg">
+    <br/><br/>
+    <input type="submit" value="Encrypt">
+
+    <br/> <br/>
+    <p id="encryptedMessage" th:text="${encryptedMessage}"></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AES</title>
+</head>
+<body>
+<form th:data="${encryptedMessage}" th:action="@{/aes}" th:method="post">
+    <label for="initialMessage">Text->To->Encrypt:</label>
+    <input type="text" th:value="${initmsg}" id="initialMessage" name="initmsg">
+    <input type="text" th:value="${secKey}" id="secKey" name="secKey">
+    <br/><br/>
+    <input name="crypt"  type="submit" value="Encrypt">
+    <br/><br/>
+    <p id="encryptedMessage" th:text="${encryptedMessage}"></p>
+    <br/>
+</form>
+
+<form th:data="${decryptedMessage}" th:action="@{/aesDecrypt}" th:method="post">
+    <label for="message">Text->To->Decrypt:</label>
+    <input type="text" th:value="${decryptedText}" id="message" name="decryptedText">
+    <input type="text" th:value="${secretKey}" id="secretKey" name="secretKey">
+    <br/><br/>
+    <input name="decrypt" type="submit" value="Decrypt">
+    <br/><br/>
+    <p id="decryptedMessage" th:text="${decryptedMessage}"></p>
+</form>
+</body>
+</html>
