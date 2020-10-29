@@ -6,24 +6,26 @@
 </head>
 <body>
 <form th:data="${encryptedMessage}" th:action="@{/aes}" th:method="post">
-    <label for="initialMessage">Text->To->Encrypt:</label>
+    <label for="initialMessage">Text->To->Encrypt and Secret Key:</label>
     <input type="text" th:value="${initmsg}" id="initialMessage" name="initmsg">
     <input type="text" th:value="${secKey}" id="secKey" name="secKey">
     <br/><br/>
     <input name="crypt"  type="submit" value="Encrypt">
-    <br/><br/>
-    <p id="encryptedMessage" th:text="${encryptedMessage}"></p>
+    <br/><br/><p>Encrypted message:</p>
+    <p id="encryptedMessage" th:text="${encryptedMessage}" style="color:red"></p>
     <br/>
 </form>
-
+<hr>
 <form th:data="${decryptedMessage}" th:action="@{/aesDecrypt}" th:method="post">
-    <label for="message">Text->To->Decrypt:</label>
+    <label for="message">Text->To->Decrypt and Secret Key:</label>
     <input type="text" th:value="${decryptedText}" id="message" name="decryptedText">
     <input type="text" th:value="${secretKey}" id="secretKey" name="secretKey">
     <br/><br/>
     <input name="decrypt" type="submit" value="Decrypt">
-    <br/><br/>
-    <p id="decryptedMessage" th:text="${decryptedMessage}"></p>
+    <br/><br/><p>Decrypted message:</p>
+    <p id="decryptedMessage" th:text="${decryptedMessage}" style="color:red"></p>
 </form>
+<hr>
+<a th:href="@{/}">Go to the main page >></a>
 </body>
 </html>

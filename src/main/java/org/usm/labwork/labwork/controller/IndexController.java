@@ -21,10 +21,7 @@ public class IndexController {
 
     @RequestMapping(value = "/sha", method = RequestMethod.POST)
     public String encryptSHA(@ModelAttribute(name = "initmsg")String message, Model model) {
-        SHA1 sha1 = new SHA1(message);
-        String encryptedMessage = sha1.getEncryptedMessage();
-        model.addAttribute("encryptedMessage", encryptedMessage);
-        System.out.println(encryptedMessage);
+        model.addAttribute("encryptedMessage", new SHA1(message).getEncryptedMessage());
         return "sha";
     }
 
@@ -36,20 +33,14 @@ public class IndexController {
     @RequestMapping(value = "/aes", method = RequestMethod.POST)
     public String encryptAes(@ModelAttribute(name = "initmsg")String message,
                              @ModelAttribute(name = "secKey")String secretKey, Model model) {
-        AES aes = new AES(message, secretKey);
-        String encryptedMessage = aes.getEncryptedMessage();
-        model.addAttribute("encryptedMessage", encryptedMessage);
-        System.out.println(encryptedMessage);
+        model.addAttribute("encryptedMessage", new AES(message, secretKey).getEncryptedMessage());
         return "aes";
     }
 
     @RequestMapping(value = "/aesDecrypt", method = RequestMethod.POST)
     public String decryptAes(@ModelAttribute(name = "decryptedText")String message,
                              @ModelAttribute(name = "secretKey")String secretKey, Model model) {
-
-        String decryptedMessage = AES.decrypt(message, secretKey);
-        model.addAttribute("decryptedMessage", decryptedMessage);
-        System.out.println(decryptedMessage);
+        model.addAttribute("decryptedMessage", AES.decrypt(message, secretKey));
         return "aes";
     }
 

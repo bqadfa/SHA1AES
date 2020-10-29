@@ -13,8 +13,10 @@
     <br/><br/>
     <input type="submit" value="Encrypt">
 
-    <br/> <br/>
-    <p id="encryptedMessage" th:text="${encryptedMessage}"></p>
+    <br/> <br/><p>Encrypted message:</p>
+    <p id="encryptedMessage" th:text="${encryptedMessage}" style="color:red"></p>
 </form>
+<hr>
+<a th:href="@{/}">Go to the main page >></a>
 </body>
 </html>
